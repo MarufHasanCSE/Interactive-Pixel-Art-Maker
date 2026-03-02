@@ -1,0 +1,48 @@
+:root {
+    --bg: #ffffff;
+    --text: #1a1a1a;
+    --accent: #3b82f6;
+}
+
+body.dark {
+    --bg: #1a1a1a;
+    --text: #ffffff;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    transition: 0.3s;
+    font-family: 'Courier New', monospace;
+}
+
+.clock-container {
+    text-align: center;
+}
+
+#clock {
+    font-size: 5rem;
+    font-weight: bold;
+    color: var(--accent);
+}
+
+#date {
+    font-size: 1.5rem;
+    margin-top: 10px;
+    opacity: 0.8;
+}
+
+#theme-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
