@@ -1,21 +1,31 @@
-function updateClock() {
-    const now = new Date();
-    
-    const h = String(now.getHours()).padStart(2, '0');
-    const m = String(now.getMinutes()).padStart(2, '0');
-    const s = String(now.getSeconds()).padStart(2, '0');
-    
-    document.getElementById('clock').textContent = `${h}:${m}:${s}`;
-    
-    const options = { weekday: 'long', month: 'long', day: 'numeric' };
-    document.getElementById('date').textContent = now.toLocaleDateString(undefined, options);
+const grid = document.getElementById('grid-container');
+const colorPicker = document.getElementById('color-picker');
+const clearBtn = document.getElementById('clear-btn');
+
+
+function createGrid() {
+    grid.innerHTML = '';
+    for (let i = 0; i < 400; i++) {
+        const pixel = document.createElement('div');
+        pixel.className = 'pixel';
+        
+        
+        pixel.addEventListener('mousedown', () => {
+            pixel.style.backgroundColor = colorPicker.value;
+        });
+
+        
+        pixel.addEventListener('mouseover', (e) => {
+            if (e.buttons === 1) { 
+                pixel.style.backgroundColor = colorPicker.value;
+            }
+        });
+
+        grid.appendChild(pixel);
+    }
 }
 
-setInterval(updateClock, 1000);
-updateClock();
+clearBtn.addEventListener('click', createGrid);
 
-const toggle = document.getElementById('theme-toggle');
-toggle.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
-});
+
+createGrid();
